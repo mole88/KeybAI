@@ -6,7 +6,8 @@ namespace KeybAI
 {
     public partial class StatisticsWindow : Window
     {
-        public StatisticsWindow()
+        Mistakes mistakes;
+        public StatisticsWindow(Mistakes mis)
         {
             InitializeComponent();
             TotalCharsLabel.Text += Properties.Settings.Default.totalChars.ToString();
@@ -14,6 +15,8 @@ namespace KeybAI
             TotalMistakesLabel.Text += Properties.Settings.Default.totalMis.ToString();
             TotalLinesLabel.Text += Properties.Settings.Default.totalLines.ToString();
             TotalTimeLabel.Text += Properties.Settings.Default.totalTime.ToString();
+
+            mistakes = mis;
         }
         public void ResetButton_Click(object sender, EventArgs e)
         {
@@ -28,6 +31,7 @@ namespace KeybAI
                 Properties.Settings.Default.totalMis = 0;
                 Properties.Settings.Default.totalLines = 0;
                 Properties.Settings.Default.totalTime = TimeSpan.Zero;
+                mistakes.DeleteMistakes();
 
                 MessageBox.Show("Restart application for refrash data.");
                 Application.Current.Shutdown();

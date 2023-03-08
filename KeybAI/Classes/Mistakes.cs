@@ -6,7 +6,7 @@ using System.IO;
 
 namespace KeybAI.Classes
 {
-    internal class Mistakes
+    public class Mistakes
     {
         private Dictionary<string, int> mistakeLetters = new Dictionary<string, int>();
         public int lineMissCount { get; set; }
@@ -39,11 +39,10 @@ namespace KeybAI.Classes
             using StreamWriter sw = new("Mistakes.json");
             sw.Write(json);
         }
-        /*public static void DeleteMistakes()
+        public void DeleteMistakes()
         {
-            MessageBox.Show(File.Exists("Mistakes.json").ToString());
-            File.Delete("Mistakes.json");
-        }*/
+            mistakeLetters = new Dictionary<string, int>();
+        }
         private void LoadMistakes()
         {
             if (File.Exists("Mistakes.json"))

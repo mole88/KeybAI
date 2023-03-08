@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -26,15 +25,13 @@ namespace KeybAI
             LoadSettings();
             text = new(folderPath);
             UpdateLines();
-            /*OpenAIAPI api = new OpenAIAPI("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");
-            api.Completions.StreamCompletionAsync(
-                new CompletionRequest("make up a text of 4 meaningful sentences in which all words contain the letter 'u'", Model.DavinciText, 120, 0.5),
-                    res => mainText.Text += res.ToString());*/
 
             MainTextBox.Focus();
         }
         private async void MainTextBox_Changed(object sender, RoutedEventArgs e)
         {
+            if (MainTextBox.Text.Length > FirstStringLabel.Text.Length)
+                return;
             if (MainTextBox.Text == FirstStringLabel.Text.Remove(MainTextBox.Text.Length))
             {
                 MainTextBox.Background = Brushes.White;
@@ -176,7 +173,7 @@ namespace KeybAI
         }
         private void StatButton_Click(object sender, RoutedEventArgs e)
         {
-            statWindow = new StatisticsWindow { Owner = this };
+            statWindow = new StatisticsWindow(mistakes) { Owner = this };
             statWindow.ShowDialog();
         }
         private void ChangeLangButton_Click(object sender, RoutedEventArgs e)
