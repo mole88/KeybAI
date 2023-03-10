@@ -8,7 +8,7 @@ namespace KeybAI.Classes
 {
     public class Mistakes
     {
-        private Dictionary<string, int> mistakeLetters = new Dictionary<string, int>();
+        private Dictionary<string, int> mistakeLetters = new();
         public int lineMissCount { get; set; }
 
         public Mistakes()

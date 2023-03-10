@@ -47,7 +47,7 @@ namespace KeybAI.Classes
         private void TextToStrings()
         {
             string[] words = text.Split();
-            int maxLength = 90;
+            int maxLength = 88;
             int lastWord = 0;
             string currentLine = string.Empty;
             for (int i = 0; i < words.Length; i++)

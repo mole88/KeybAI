@@ -66,7 +66,7 @@ namespace KeybAI
             {
                 sw.Stop();
                 Timed();
-                mistakes.ShowMistakes();
+                //mistakes.ShowMistakes();
                 if (text.GetLinesCount() == 0)
                 {
                     MainTextBox.Text = string.Empty;
